@@ -1,0 +1,11 @@
+.header {
+    display: flex;
+    align-items: center;
+    
+}
+
+.logo {
+    background-color: transparent;
+    height: 10rem;
+    padding: 1rem;
+}
