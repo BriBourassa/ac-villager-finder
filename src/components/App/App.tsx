@@ -1,18 +1,13 @@
 import React, { FC, useState, useEffect } from 'react';
 import './App.css';
 import Villager from '../Villager/Villager';
-
-// Villager comp = one single dude
-// stick all interfaces in one file?
+import Header from '../Header/Header';
 
 
-interface AppProps {
-  
-}
 
 const App: React.FC = () => {
   const [allVillagers, setAllVillagers] = useState({});
-  const [error, setError] = useState('')
+  const [error, setError] = useState<Error | null>(null)
 
   useEffect(() => {
     fetchAllVillagers()
@@ -28,8 +23,8 @@ const App: React.FC = () => {
       const data = await res.json()
       setAllVillagers(data)
     }
-    catch(err) {
-      // setError(err)
+    catch(err: any) {
+      setError(err)
       console.log(err)
     }
   }
@@ -41,18 +36,16 @@ const App: React.FC = () => {
       }
       return acc
     }, {});
-  // randomize a picture each time? or just first one .find() and use that icon only OR my favs! find bones pls
+  // randomize a picture each time? or just first one .find() and use that icon 
 
   // make name a Link! route to /species
-  // console.log('line 59', speciesList)
 
-  // iterate through each obj. do a map!
   const display = Object.keys(speciesList).map((animal) => {
     return (
-      <>
-        <h1>{animal}</h1>
-        <img src={speciesList[animal]} />
-      </>
+        <div className='single-species'>
+          <img src={speciesList[animal]} />
+          <h1>{animal}</h1>
+        </div>
     )
   })
   return display
@@ -61,8 +54,14 @@ console.log(allVillagers)
 
 return (
   <div className="App">
-      {displaySpeciesList(allVillagers)}
+    <Header />
+    <h2>choose a villager type to see more</h2>
+    <div className='species-container'>
+   
+        {displaySpeciesList(allVillagers)}
+   
     </div>
+  </div>
   );
 }
 

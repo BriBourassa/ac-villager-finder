@@ -1,4 +1,3 @@
-
 body {
   margin: 0;
   font-family: FinkHeavy, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -16,7 +15,7 @@ body {
 }
 
 
-/* code {
+code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-} */
+}
