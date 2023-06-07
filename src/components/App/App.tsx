@@ -2,67 +2,74 @@ import React, { FC, useState, useEffect } from 'react';
 import './App.css';
 import Villager from '../Villager/Villager';
 import Header from '../Header/Header';
-
-
+import { Switch, Route, Link } from 'react-router-dom';
+import '../../assets/fonts/FinkHeavy.ttf';
 
 const App: React.FC = () => {
-  const [allVillagers, setAllVillagers] = useState({});
-  const [error, setError] = useState<Error | null>(null)
+  const [allVillagers, setAllVillagers] = useState<{ [key: string]: Villager }>(
+    {}
+  );
+  const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
-    fetchAllVillagers()
-  }, [])
+    fetchAllVillagers();
+  }, []);
 
   const fetchAllVillagers = async () => {
-    const url ='http://acnhapi.com/v1/villagers'
+    const url = 'http://acnhapi.com/v1/villagers';
     try {
-      const res = await fetch(url)
-      if(!res.ok) {
-        throw new Error("There was a problem")
+      const res = await fetch(url);
+      if (!res.ok) {
+        throw new Error('There was a problem');
       }
-      const data = await res.json()
-      setAllVillagers(data)
+      const data = await res.json();
+      setAllVillagers(data);
+    } catch (err: any) {
+      setError(err);
+      console.log(err);
     }
-    catch(err: any) {
-      setError(err)
-      console.log(err)
-    }
-  }
+  };
 
-  const displaySpeciesList = (villagers: Villager) => {
-    const speciesList = Object.values(villagers).reduce((acc, cur) => {
-      if(!acc[cur.species]) {
-        acc[cur.species] = cur.icon_uri
-      }
-      return acc
-    }, {});
-  // randomize a picture each time? or just first one .find() and use that icon 
+  const displaySpeciesList = () => {
+    const speciesList = Object.values(allVillagers).reduce(
+      (acc: { [key: string]: Villager[] }, cur) => {
+        if (!acc[cur.species]) {
+          acc[cur.species] = [];
+        }
+        acc[cur.species].push(cur)
+        return acc;
+      },
+      {}
+    );
 
-  // make name a Link! route to /species
+    const display = Object.keys(speciesList).map((animal) => {
+      return (
+        <Link to="/:species">
+          <div className="single-species">
+            <img src={speciesList[animal][0].icon_uri} />
+            <h1>{animal}</h1>
+          </div>
+        </Link>
+      );
+    });
+    return display;
+  };
+  // console.log(allVillagers)
 
-  const display = Object.keys(speciesList).map((animal) => {
-    return (
-        <div className='single-species'>
-          <img src={speciesList[animal]} />
-          <h1>{animal}</h1>
-        </div>
-    )
-  })
-  return display
-}
-console.log(allVillagers)
+  return (
+    <div className="App">
+      <Header />
 
-return (
-  <div className="App">
-    <Header />
-    <h2>choose a villager type to see more</h2>
-    <div className='species-container'>
-   
-        {displaySpeciesList(allVillagers)}
-   
+      <Switch>
+        <Route exact path="/">
+          <h2>choose a villager type to see more</h2>
+          <div className="species-container">
+            {displaySpeciesList()}
+          </div>
+        </Route>
+      </Switch>
     </div>
-  </div>
   );
-}
+};
 
 export default App;
