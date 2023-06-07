@@ -1,15 +1,13 @@
 interface Villager {
   id: number
-  name: {
-    'name-USen': string
-  }
+  name: string
   species: string
   personality: string
-  'birthday-string': string
+  birthday: string
   hobby: string
-  'catch-phrase': string
-  'image_uri': string
-  'icon_uri' : string
+  catchPhrase: string
+  imageUri: string
+  iconUri : string
 }
 
 export default Villager
