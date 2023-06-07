@@ -1,13 +1,14 @@
-import * as React from 'react';
+import React from 'react';
 
-interface Props {
-    
+export interface IAppProps {
 }
 
-export const VillagerTypesList = (props: Props) => {
+function VillagerTypesList (props: IAppProps) {
   return (
     <div>
       
     </div>
   );
 }
+
+export default VillagerTypesList
