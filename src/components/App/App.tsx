@@ -1,15 +1,15 @@
 import React, { FC, useState, useEffect } from 'react';
 import './App.css';
-import Villager from '../Villager/Villager';
+import Villager from '../../types/Villager';
 import Header from '../Header/Header';
 import { Switch, Route, Link } from 'react-router-dom';
-import '../../assets/fonts/FinkHeavy.ttf';
 import cleanData from '../../utilities';
+import VillagerTypesList from '../VillagerTypesList/VillagerTypesList';
 
 const App: React.FC = () => {
-  const [allVillagers, setAllVillagers] = useState<{ [species: string]: Villager[] }>(
-    {}
-  );
+  const [allVillagers, setAllVillagers] = useState<{
+    [species: string]: Villager[];
+  }>({});
   const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
@@ -24,13 +24,15 @@ const App: React.FC = () => {
         throw new Error('There was a problem');
       }
       const data = await res.json();
-      const cleanedData = cleanData(data)
+      const cleanedData = cleanData(data);
       setAllVillagers(cleanedData);
     } catch (err: any) {
       setError(err);
       console.log(err);
     }
   };
+
+  console.log(allVillagers);
 
   // this should be a componenet!
   // const displaySpeciesList = () => {
@@ -54,9 +56,10 @@ const App: React.FC = () => {
 
       <Switch>
         <Route exact path="/">
-          <h2>choose a villager type to see more</h2>
+          <h2 className='testing'>choose a villager type to see more</h2>
           <div className="species-container">
             {/* {displaySpeciesList()} */}
+            <VillagerTypesList />
           </div>
         </Route>
       </Switch>

@@ -1,13 +1,6 @@
-@font-face {
-  font-family: FinkHeavy;
-  src: local('FinkHeavy'), url('./assets/fonts/FinkHeavy.ttf') format('truetype');
-}
-
 body {
   margin: 0;
-  font-family: FinkHeavy, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'FinkHeavy';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 

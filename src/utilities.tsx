@@ -1,4 +1,4 @@
-import Villager from './components/Villager/Villager';
+import Villager from './types/Villager';
 
 const cleanData = (data: { [key: string]: any }) => {
   return Object.values(data).reduce(
@@ -15,7 +15,7 @@ const cleanData = (data: { [key: string]: any }) => {
         hobby: cur.hobby,
         catchPhrase: cur['catch-phrase'],
         imageUri: cur['image_uri'],
-        iconUri : cur['icon_uri'],
+        iconUri: cur['icon_uri'],
       });
       return acc;
     },
