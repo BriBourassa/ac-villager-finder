@@ -32,36 +32,28 @@ const App: React.FC = () => {
     }
   };
 
-  console.log(allVillagers);
+  // console.log(allVillagers);
 
-  // this should be a componenet!
-  // const displaySpeciesList = () => {
-
-  //   const display = Object.keys(speciesList).map((species) => {
-  //     return (
-  //       <Link to={`/${species}`}>
-  //         <div className="single-species">
-  //           <img src={speciesList[species][0].icon_uri} />
-  //           <h1>{species}</h1>
-  //         </div>
-  //       </Link>
-  //     );
-  //   });
-  //   return display;
-  // };
-
+ 
   return (
     <div className="App">
       <Header />
 
       <Switch>
+
         <Route exact path="/">
           <h2 className='testing'>choose a villager type to see more</h2>
           <div className="species-container">
-            {/* {displaySpeciesList()} */}
-            <VillagerTypesList />
+            <VillagerTypesList allVillagers={allVillagers}/>
           </div>
         </Route>
+
+        {/* <Route path={`/${species}`}>
+
+        </Route> */}
+
+
+
       </Switch>
     </div>
   );
