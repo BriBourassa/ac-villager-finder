@@ -1,0 +1,14 @@
+.species-container {
+    display: flex;
+    flex-wrap: wrap;
+    border: solid 2px blue;
+    margin: 2rem;
+  }
+  
+  .single-species {
+    padding: .5rem;
+    border: solid 1px red;
+    border-radius: .5rem;
+    margin: .5rem;
+    background-color: rgb(130, 182, 156);
+  }
