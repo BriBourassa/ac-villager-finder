@@ -5,7 +5,7 @@ import Villager from '../../types/Villager';
 import './VillagerTypesList.css'
 
 export interface Props {
-  allVillagers: Villager[];
+  allVillagers: {[species: string]: Villager[]};
 }
 
 // display the main page list of 35 species
@@ -22,7 +22,7 @@ const VillagerTypesList: React.FC<Props> = ({ allVillagers }) => {
         </Link>
       );
     });
-    console.log(display)
+    // console.log(display)
     return display;
   };
 
