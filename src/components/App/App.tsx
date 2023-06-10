@@ -5,6 +5,7 @@ import Header from '../Header/Header';
 import { Switch, Route, Link } from 'react-router-dom';
 import cleanData from '../../utilities';
 import VillagerTypesList from '../VillagerTypesList/VillagerTypesList';
+import VillagerDetails from '../VillagerDetailsList/VillagerDetailsList';
 
 const App: React.FC = () => {
   const [allVillagers, setAllVillagers] = useState<{
@@ -32,7 +33,7 @@ const App: React.FC = () => {
     }
   };
 
-  // console.log(allVillagers);
+  console.log(allVillagers);
 
  
   return (
@@ -48,9 +49,12 @@ const App: React.FC = () => {
           </div>
         </Route>
 
-        {/* <Route path={`/${species}`}>
-
-        </Route> */}
+        <Route path={"/:species"} render={({ match }) => {
+          console.log('match!!!', allVillagers[match.params.species])
+          return <VillagerDetails villagerSpecies={allVillagers[match.params.species]}/>
+        }}>
+          
+        </Route>
 
 
 
