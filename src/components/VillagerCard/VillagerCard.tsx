@@ -11,7 +11,7 @@ const { imageUri, name, hobby, personality, catchPhrase } = villager
   return (
     <>
     <div className='villager-card'>
-        <img src={`${imageUri}`} />
+        <img className='display-img' src={`${imageUri}`} />
         <div className='stats'>
             <h1>{name}</h1>
             <h2>Personality: {personality}</h2>
