@@ -33,31 +33,30 @@ const App: React.FC = () => {
     }
   };
 
-  console.log(allVillagers);
-
- 
   return (
     <div className="App">
       <Header />
-
       <Switch>
 
         <Route exact path="/">
-          <h2 className='testing'>choose a villager type to see more</h2>
+          <h2 className="testing">choose a villager type to see more</h2>
           <div className="species-container">
-            <VillagerTypesList allVillagers={allVillagers}/>
+            <VillagerTypesList allVillagers={allVillagers} />
           </div>
         </Route>
 
-        <Route path={"/:species"} render={({ match }) => {
-          console.log('match!!!', allVillagers[match.params.species])
-          return <VillagerDetails villagerSpecies={allVillagers[match.params.species]}/>
-        }}>
-          
-        </Route>
-
-
-
+        <Route
+          path={'/:species'}
+          render={({ match }) => {
+            return (
+              <div className='species-container'>
+                <VillagerDetails
+                  villagerSpecies={allVillagers[match.params.species]}
+                />
+              </div>
+            );
+          }}
+        ></Route>
       </Switch>
     </div>
   );

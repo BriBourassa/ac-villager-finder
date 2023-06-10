@@ -1,0 +1,9 @@
+.villager-card {
+    padding: .5rem;
+    border: solid 5px green;
+    border-radius: .5rem;
+    margin: .5rem;
+    background-color: rgb(130, 182, 156);
+    display: flex;
+    
+}

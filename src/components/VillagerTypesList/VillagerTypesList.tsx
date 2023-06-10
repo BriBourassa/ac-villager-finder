@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import App from '../App/App';
 import Villager from '../../types/Villager';
 import './VillagerTypesList.css'
 
@@ -25,8 +24,7 @@ const VillagerTypesList: React.FC<Props> = ({ allVillagers }) => {
     // console.log(display)
     return display;
   };
-
-  return <div>{displaySpeciesList()}</div>;
+  return <div className='display-species-list'>{displaySpeciesList()}</div>;
 };
 
 export default VillagerTypesList;
