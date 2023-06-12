@@ -1,0 +1,27 @@
+{
+"ant00": {
+  "id": 1,
+  "name": "Cyrano",
+  "species": "Anteater",
+  "personality": "Cranky",
+  "birthday": "March 9th",
+  "hobby": "Education",
+  "catchPhrase": "ah-CHOO",
+  "icon_uri": "https://acnhapi.com/v1/icons/villagers/1",
+  "image_uri": "https://acnhapi.com/v1/images/villagers/1",
+  "saying": "Don't punch your nose to spite your face."
+  },
+
+"cat00": {
+  "id": 42,
+  "name": "Bob",
+  "species": "Cat",
+  "personality": "Lazy",
+  "birthday": "January 1st",
+  "hobby": "Play",
+  "catchPhrase": "pthhpth",
+  "icon_uri": "https://acnhapi.com/v1/icons/villagers/42",
+  "image_uri": "https://acnhapi.com/v1/images/villagers/42",
+  "saying": "You only live once...or nine times."
+  }
+}
