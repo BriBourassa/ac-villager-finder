@@ -1,5 +1,4 @@
-
-describe('template spec', () => {
+describe('Spec', () => {
   beforeEach(() => {
     cy.intercept("GET", "http://acnhapi.com/v1/villagers/", {
       statusCode: 200,
@@ -8,30 +7,32 @@ describe('template spec', () => {
     cy.visit("http://localhost:3000")
   })
 
-  it.skip('should go to a base url', () => {
+  it('should go to a base url', () => {
     cy.url().should('include', '/')
   })
 
-  it.skip('should render a heading', () => {
+  it('should render a heading', () => {
     cy.get('.header').should('be.visible')
       .contains('Villager Finder')
   })
 
-  it.skip('should render a list of villagers by species', () => {
-    cy.get('.display-species-list').should('have.length', 2)
-  })
-
-
-  it('should display the icon and species name of villagers in main display', () => {
+  it('should render a list of villagers by species, and display the icon and species name of villagers', () => {
     cy.get('[href="/Anteater"] > .single-species > img').should('exist')
       .get('[href="/Anteater"] > .single-species > h1').contains('Anteater')
     cy.get('[href="/Cat"] > .single-species > img').should('exist')
       .get('[href="/Cat"] > .single-species > h1').contains('Cat')
   })
 
+  it('should display a list of the characters of a species and their bios when a species icon is clicked', () => {
+    cy.get('[href="/Anteater"] > .single-species > img').click()
+    cy.get('.display-img').should('exist')
+    cy.get('.stats').contains('Personality: Cranky')
+    cy.get('.stats').contains('Hobby: Education')
+  })
 
-
-  // it('', () => {
-    
-  // })
+  it('should return to the home page when the Animal Crossing logo is clicked', () => {
+    cy.get('[href="/Anteater"] > .single-species > img').click()
+    cy.get('.logo').click()
+    cy.url().should('include', '/')
+  })
 })
