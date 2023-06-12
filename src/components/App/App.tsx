@@ -18,7 +18,7 @@ const App: React.FC = () => {
   }, []);
 
   const fetchAllVillagers = async () => {
-    const url = 'http://acnhapi.com/v1/villagers';
+    const url = 'http://acnhapi.com/v1/villagers/';
     try {
       const res = await fetch(url);
       if (!res.ok) {
