@@ -1,9 +1,10 @@
-.species-container {
+/* .species-container {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     border: solid 2px blue;
     margin: 2rem;
-  }
+  } */
   
   .single-species {
     padding: .5rem;
@@ -12,3 +13,9 @@
     margin: .5rem;
     background-color: rgb(130, 182, 156);
   }
+
+.display-species-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}

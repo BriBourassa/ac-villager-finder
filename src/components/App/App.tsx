@@ -5,6 +5,7 @@ import Header from '../Header/Header';
 import { Switch, Route, Link } from 'react-router-dom';
 import cleanData from '../../utilities';
 import VillagerTypesList from '../VillagerTypesList/VillagerTypesList';
+import VillagerDetails from '../VillagerDetailsList/VillagerDetailsList';
 
 const App: React.FC = () => {
   const [allVillagers, setAllVillagers] = useState<{
@@ -17,7 +18,7 @@ const App: React.FC = () => {
   }, []);
 
   const fetchAllVillagers = async () => {
-    const url = 'http://acnhapi.com/v1/villagers';
+    const url = 'http://acnhapi.com/v1/villagers/';
     try {
       const res = await fetch(url);
       if (!res.ok) {
@@ -32,28 +33,30 @@ const App: React.FC = () => {
     }
   };
 
-  // console.log(allVillagers);
-
- 
   return (
     <div className="App">
       <Header />
-
       <Switch>
 
         <Route exact path="/">
-          <h2 className='testing'>choose a villager type to see more</h2>
+          <h2 className="testing">choose a villager type to see more</h2>
           <div className="species-container">
-            <VillagerTypesList allVillagers={allVillagers}/>
+            <VillagerTypesList allVillagers={allVillagers} />
           </div>
         </Route>
 
-        {/* <Route path={`/${species}`}>
-
-        </Route> */}
-
-
-
+        <Route
+          path={'/:species'}
+          render={({ match }) => {
+            return (
+              <div className='species-container'>
+                <VillagerDetails
+                  villagerSpecies={allVillagers[match.params.species]}
+                />
+              </div>
+            );
+          }}
+        ></Route>
       </Switch>
     </div>
   );
